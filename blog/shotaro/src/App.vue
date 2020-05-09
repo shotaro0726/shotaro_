@@ -1,32 +1,75 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Header />
+     <main>
+       <transition appear>
+         <router-view />
+       </transition>
+     </main>
+     <Footer />
   </div>
 </template>
 
+<script>
+import Header from './components/Header'
+import Footer from './components/Footer'
+export default {
+  name: 'app',
+  components: {Header, Footer}
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap");
+   * {
+     margin: 0;
+     padding: 0;
+   }
 
-#nav {
-  padding: 30px;
-}
+   main {
+     min-height: calc(100vh - 290px);
+   }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+   body {
+     font-family: 'Noto Serif JP', serif;
+     line-height: 1.5;
+     font-size: 14px;
+   }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+   .container {
+     width: 100%;
+     padding: 0 20px;
+     box-sizing: border-box;
+   }
+
+   @media(min-width: 768px) {
+     .container {
+       width: 700px;
+       padding: 0;
+       margin: 0 auto;
+     }
+   }
+
+   @media (min-width: 1024px){
+     .container {
+       width: 980px;
+     }
+   }
+
+   .v-enter-active {
+     transition: opacity 1s;
+   }
+
+   .v-enter {
+     opacity: 0;
+   }
+
+   .v-enter-to {
+     opacity: 1;
+   }
+
+   .v-leave, .v-leave-active, .v-leave-to {
+     opacity: 0;
+   }
+
 </style>
